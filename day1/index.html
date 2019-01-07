@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+      <title>State Machine</title>
+  </head>  
+  <body>
+      <div id="outputText">Hello world.</div>
+    <div>
+        <button onclick="changeState()">Change State</button>
+    </div>
+
+      <script>
+        //A variable that has my state
+        //JS is dynamcially typed
+        var state;
+
+
+        //A set of states we can be in
+        var TITLE_STATE = 1;
+        var LOAD_STATE = 2;
+        var ACTION_STATE = 3;
+
+        //Set our intital state
+        state = TITLE_STATE;
+
+        updateUser();
+
+        function updateUser(){
+            console.log("Current state is " + state);
+            document.getElementById("outputText").innerHTML = "Current state is " + state;
+        }
+
+        //Change between states
+
+
+      
+      //void changeState()
+      function changeState(){
+          if(state == TITLE_STATE)
+          {
+              state = LOAD_STATE;
+          }
+          else if(state == LOAD_STATE)
+          {
+              state = ACTION_STATE;
+          }
+          else{
+              state = TITLE_STATE;
+          }
+
+          updateUser();
+      }
+
+
+      </script>
+  </body>
+</html>
