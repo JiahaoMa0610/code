@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>State Machine</title>
+  <style>
+    .screen {
+      width: 640px;
+      height: 480px;
+      color: black;
+      text-align: center;
+      line-height: 400px;
+    }
+  </style>
+</head>
+
+<body onload="main()">
+
+
+  <template id="template">
+    <div>Text</div>
+    <div>
+      <button onclick="">Button Text</button>
+    </div>
+  </template>
+
+  <div id="templateHere"></div>
+
+  <script>
+    //View Code
+
+    var startTemplate, loadTemplate, runTemplate;
+    var templateHere;
+
+    function updateView() {
+      //Get initial values as needed
+      if (!template)
+        template = document.getElementById("template");
+      if (!templateHere)
+        templateHere = document.getElementById("templateHere");
+
+
+
+      templateHere.innerHTML = "";
+
+      //if (state == ??) {
+      //  var clone = template.content.cloneNode(true);
+      //  templateHere.appendChild(clone);
+      //}
+    }
+      
+  </script>
+
+  <script>
+    //Controls
+
+    function main() {
+      //setInterval(timer, 1000 / 30);
+      //updateView();
+    }
+
+    var listeners = [];
+    
+    function someEvent() {
+      for (let i = 0; i < listeners.length; i++) {
+        listeners[i].update();
+      }
+    }
+
+  </script>
+
+
+
+
+  <script>
+    //Model code
+
+
+
+    //A variable that has my state
+    //JS is dynamcially typed
+    var state;
+    var stateHandler;
+
+
+    //A set of states we can be in
+    var TITLE_STATE = 1;
+    var LOAD_STATE = 2;
+    var ACTION_STATE = 3;
+
+    //Set our intital state
+    state = TITLE_STATE;
+
+    var stateHandlerGeneric = {
+      boot() {
+        listeners.push(this);
+      },
+      update() {
+        //state = OTHER_STATE;
+        listeners.splice(listeners.indexOf(this), 1);
+        updateStateHandler();
+      }
+    };
+
+    
+
+
+
+    updateStateHandler();
+
+    function updateStateHandler() {
+      if (state == TITLE_STATE) {
+        //stateHandler = titleStateHandler;
+      }
+      
+
+      //stateHandler.boot();
+      updateView();
+    }
+  </script>
+</body>
+
+</html>
